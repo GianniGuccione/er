@@ -1,0 +1,450 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Makoto Technical Report
+% LaTeX Template
+% Version 1.0 (December 6, 2024)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%!TEX program = xelatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+% CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	a4paper,
+]{CSMakotoTechnicalReport}
+
+\addbibresource{sample.bib}
+
+%----------------------------------------------------------------------------------------
+% REPORT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\reporttitle{Engineering Report}
+\reportsubtitle{CV300 / QSB 6.7 Torsional Vibration Analysis}
+\reportauthors{R\&D Department\\Gianni Guccione P.E.}
+\reportdate{May 2026}
+\leftheadercontent{CV300 Coupling Torsional Vibration Analysis}
+\rightheadercontent{\includegraphics[height=0.8cm]{Images/NLBCorp_LogoBlack.png}}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+% TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+
+\vspace*{-0.075\textheight}
+
+\hfill\includegraphics[width=4.5cm]{Images/NLBCorp_LogoBlack.png}
+
+\vspace{0.06\textheight}
+
+{\large\raggedright\reportdate\par}
+
+\vspace{0.01\textheight}
+
+{\fontsize{32pt}{34pt}\selectfont\raggedright\textbf{\reporttitle}\par}
+
+\vspace{0.03\textheight}
+
+{\Large\raggedright\textit{\textbf{\reportsubtitle}}\par}
+
+\vspace{0.06\textheight}
+
+{\large\raggedright\reportauthors\par}
+
+\vspace{0.12\textheight}
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2}
+
+\tableofcontents
+
+%----------------------------------------------------------------------------------------
+% SUMMARY AND CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\section{Summary and Conclusions}
+
+This report evaluates torsional vibration of a Cummins QSB 6.7 L six-cylinder diesel engine directly coupled to an ultra-high-pressure triplex plunger pump.
+
+Cummins provides the QSB 6.7 L diesel engine rated at 275 hp. Torque is transmitted through a Pitts electric clutch, spline shaft, TCP torsional damper, and 5:1 reduction gearbox. NLB provides the remaining driveline components and the CV300 ultra-high-pressure triplex plunger pump.
+
+Overload of the torsion damper springs and engine-side clutch bearing failures are the motivation for this evaluation. Measurements of spline shaft torque are recorded with torsional strain gauges and compared to predicted torque from a mathematical model.
+
+\[
+\text{Engine}
+\rightarrow
+\text{Clutch}
+\rightarrow
+\text{Spline Shaft}
+\rightarrow
+\text{Damper}
+\rightarrow
+\text{5:1 Reduction Gear}
+\rightarrow
+\text{Pump}
+\]
+
+The maximum spline shaft torque occurs near 1157 RPM. Operation above approximately 1400 RPM is recommended for this particular torsion damper spring rate and rotating inertia. Life and reliability can be improved by supporting the engine-side of the spline shaft with a pilot bearing located in the engine flywheel, evaluating revised torsion spring rates, and investigating viscous torsional dampers.
+
+%----------------------------------------------------------------------------------------
+% GENERAL
+%----------------------------------------------------------------------------------------
+
+\section{General}
+
+\subsection{Summary}
+
+\subsubsection*{Objectives}
+
+\begin{itemize}
+\item Determine vibratory torque produced by a Cummins QSB 6.7 L six-cylinder diesel engine driving a CV300 triplex pump through a 4.93:1 reduction gearbox.
+\item Determine clutch bearing loads resulting from coupling torque fluctuations, spline shaft misalignment, and shaft form deviation.
+\item Measure spline shaft torque and bending using telemetry-based strain gauge instrumentation.
+\item Compare analytical predictions with measured results.
+\item Develop recommendations to improve clutch and driveline reliability.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/spline_shaft_instrumentation.png}
+\caption{Spline shaft instrumented to measure torque and bending using telemetry strain gauges.}
+\label{fig:spline_shaft_instrumentation}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/failed_torsion_damper.png}
+\caption{Example torsion damper fatigue resulting from repeated overload events and spring coil clash.}
+\label{fig:failed_torsion_damper}
+\end{figure}
+
+\subsubsection*{Model Assumptions}
+
+\begin{itemize}
+\item The drivetrain is represented using a lumped-parameter torsional model.
+\item Engine and pump torque inputs are generated from slider-crank kinematics and dynamic force analysis.
+\item The coupling is represented by equivalent torsional stiffness and damping.
+\item Reflected inertia is used to represent the pump-side drivetrain.
+\item Damping is assumed viscous for frequency-response and transient analyses.
+\end{itemize}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{Images/physical_system_model.png}
+\caption{Physical model of the engine, clutch, torsional damper, gearbox, and triplex pump.}
+\label{fig:physical_system_model}
+\end{figure*}
+
+\subsection{Solutions}
+
+\subsubsection*{Clutch Bearing Solutions}
+
+\begin{itemize}
+\item Support the spline shaft using a pilot bearing within the engine flywheel.
+\item Improve shaft alignment and spline fit quality.
+\item Evaluate spherical roller bearing arrangements capable of accommodating angular misalignment.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/pilot_bearing_concept.png}
+\caption{Pilot bearing concept used to support the engine-side of the spline shaft.}
+\label{fig:pilot_bearing_concept}
+\end{figure}
+
+\subsubsection*{Torsion Damper Solutions}
+
+\begin{itemize}
+\item Avoid operation near torsional resonance.
+\item Evaluate viscous torsional damper designs.
+\item Evaluate alternative torsion spring rates.
+\item Investigate centrifugal pendulum absorbers for low-speed operation.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+% TESTING RESULTS
+%----------------------------------------------------------------------------------------
+
+\section{Testing Results}
+
+\subsection{Test Setup}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/spline_shaft_instrumentation.png}
+\caption{Experimental setup used to measure spline shaft torque and bending response.}
+\label{fig:test_setup}
+\end{figure}
+
+\subsection{Measured Torque Response}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/simulated_coupling_torque_and_engine_rpm_vs_time.png}
+\caption{Simulated coupling torque and engine speed versus time.}
+\label{fig:simulated_coupling_torque_and_engine_rpm}
+\end{figure}
+
+\subsection{Transient Torque Response}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/transient_response.png}
+\caption{Transient coupling torque response during clutch engagement and load application.}
+\label{fig:transient_response}
+\end{figure}
+
+\subsection{Steady-State Torque Response}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/steady_state_torque.png}
+\caption{Steady-state coupling torque response.}
+\label{fig:steady_state_torque}
+\end{figure}
+
+\subsection{Correlation with Dynamic Model}
+
+The measured and predicted torsional responses are compared to evaluate model accuracy and identify operating regions where coupling torque is amplified.
+
+%----------------------------------------------------------------------------------------
+% DESIGN CALCULATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Design Calculations}
+
+\subsection{Lumped Parameter Torsional System}
+
+The drivetrain is modeled as a two-inertia torsional system. The engine-side inertia is represented by $J_1$, and the reflected pump-side inertia is represented by $J_{2eq}$. The spline shaft and torsion damper are represented by equivalent stiffness and damping terms.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/two_inertia_model.png}
+\caption{Equivalent two-inertia torsional model used for dynamic analysis.}
+\label{fig:two_inertia_model}
+\end{figure}
+
+\subsection{Engine and Pump Kinematic Analysis}
+
+This section develops the slider-crank position, velocity, and acceleration relationships used to determine piston motion, connecting rod motion, inertia forces, and input torque requirements.
+
+\begin{equation}
+x = r\cos\theta + \sqrt{l^2-r^2\sin^2(\theta)}
+\label{eq:x}
+\end{equation}
+
+\begin{equation}
+K=\sqrt{l^2-r^2\sin^2(\theta)}
+\label{eq:K}
+\end{equation}
+
+\begin{equation}
+\dot{x}
+=
+r\dot{\theta}\sin\theta
+\left(
+-1-\frac{r\cos\theta}{K}
+\right)
+\label{eq:xdot}
+\end{equation}
+
+\begin{equation}
+\ddot{x}
+=
+-\frac{
+r(K+r\cos\theta)
+\left(
+K^2\ddot{\theta}\cos\theta
++
+K^2\dot{\theta}^{\,2}\sin\theta
++
+r\dot{\theta}^{\,2}
+(-K+r\cos\theta)\sin^2\theta
+\right)
+}
+{K^3}
+\label{eq:xddot}
+\end{equation}
+
+\begin{equation}
+\phi
+=
+\tan^{-1}
+\left(
+-\frac{r\sin\theta}{K}
+\right)
+\label{eq:phi}
+\end{equation}
+
+\begin{equation}
+\dot{\phi}
+=
+-\frac{r\dot{\theta}\cos\theta}{K}
+\label{eq:phidot}
+\end{equation}
+
+\begin{equation}
+\ddot{\phi}
+=
+\frac{
+-K^2r\ddot{\theta}\cos\theta
++
+r\dot{\theta}^{\,2}
+\left(
+K^2-r^2\cos^2\theta
+\right)
+\sin\theta
+}
+{K^3}
+\label{eq:phiddot}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/slider_crank_geometry.png}
+\caption{Slider-crank geometry and coordinate definitions used for kinematic analysis.}
+\label{fig:slider_crank_geometry}
+\end{figure}
+
+The engine and pump are treated as slider-crank mechanisms. Position, velocity, and acceleration of the reciprocating components are determined from crank angle and angular speed.direction of spring application.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/slider_crank_geometry.png}
+\caption{Slider-crank geometry used for engine and pump kinematic analysis.}
+\label{fig:slider_crank_geometry}
+\end{figure}
+
+\subsection{Engine and Pump Dynamic Force Analysis}
+
+Dynamic force analysis is used to determine inertial forces, gas forces, joint reactions, and input torque requirements for the reciprocating mechanism.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/pump_fbd_1.png}
+\caption{Free-body diagram used for dynamic force analysis of the reciprocating mechanism.}
+\label{fig:pump_fbd}
+\end{figure}
+
+\subsection{Engine Torque Model}
+
+Engine gas torque and inertia torque are determined from cylinder pressure, reciprocating mass, crank radius, connecting rod length, and crank speed.
+
+\subsection{Pump Torque Model}
+
+Pump hydraulic torque and inertia torque are determined from discharge pressure, plunger area, reciprocating mass, crank radius, connecting rod length, and crank speed.
+
+\subsection{Coupling Frequency Response}
+
+Frequency response is used to identify the coupling natural frequency and operating speeds where torsional amplification is expected.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/frequency_response.png}
+\caption{Predicted coupling torque frequency response.}
+\label{fig:frequency_response}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/coupling_torque_trends_vs_rpm.png}
+\caption{Predicted coupling torque amplitude as a function of operating speed.}
+\label{fig:coupling_torque_trends_vs_rpm}
+\end{figure}
+
+\subsection{Transient Response}
+
+Transient analysis is used to evaluate clutch engagement, startup response, and sudden load application.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/transient_response.png}
+\caption{Transient coupling torque response during clutch engagement.}
+\label{fig:transient_response_design}
+\end{figure}
+
+\subsection{Steady-State Response}
+
+Steady-state analysis is used to evaluate torsional response at constant operating speed after transient effects decay.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/steady_state_torque.png}
+\caption{Predicted steady-state coupling torque response.}
+\label{fig:steady_state_torque_design}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/fft_waterfall.png}
+\caption{FFT waterfall plot showing dominant torsional excitation orders.}
+\label{fig:fft_waterfall}
+\end{figure}
+
+\subsection{Bearing Load Analysis}
+
+Clutch bearing reaction loads are evaluated from torque transmission, shaft misalignment, spline form deviation, and bearing support stiffness.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/bearing_load_model.png}
+\caption{Bearing load model used to estimate clutch bearing reaction forces.}
+\label{fig:bearing_load_model}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/bearing_load_fea_stiffness.png}
+\caption{Finite element model used to estimate bearing and shaft stiffness.}
+\label{fig:bearing_load_fea_stiffness}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Images/exagerated_current_design_torsional_damper_bearings.png}
+\caption{Exaggerated current design showing torsional damper and clutch bearing arrangement.}
+\label{fig:exagerated_current_design}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+% CONCLUSIONS
+%----------------------------------------------------------------------------------------
+
+\section{Conclusions}
+
+\subsection{Findings}
+
+The torsional system exhibits a primary resonance near 1157 RPM. Operation near this speed range increases coupling vibratory torque and may contribute to torsion damper spring overload and clutch bearing damage.
+
+\subsection{Recommendations}
+
+Operation above approximately 1400 RPM is recommended for this torsion damper configuration. Additional improvements include engine-side spline shaft support, improved alignment control, revised torsion spring rates, and evaluation of viscous torsional damping.
+
+%----------------------------------------------------------------------------------------
+% REFERENCES
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\addcontentsline{toc}{section}{Reference List}
+\printbibliography[title=Reference List]
+
+\end{multicols}
+
+\end{document}
